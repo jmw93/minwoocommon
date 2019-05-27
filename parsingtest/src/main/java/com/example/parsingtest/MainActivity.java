@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -28,9 +29,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Tour> tourlist;
+
     Adapter adapter;
     RecyclerView recyclerView;
     XMLPullParserHandler xmlPullParserHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         adapter = new Adapter();
         xmlPullParserHandler = new XMLPullParserHandler();
+
         tourlist = new ArrayList<Tour>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -52,11 +56,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         adapter.setItems(tourlist);
+
                         recyclerView.setAdapter(adapter);
+
                     }
+
                 });
             }
         }).start();
+
 
 
 

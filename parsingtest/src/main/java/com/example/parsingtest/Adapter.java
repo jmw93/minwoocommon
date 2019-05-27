@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ import java.util.List;
         if(item !=null) {
             holder.name.setText(item.getName());
             holder.address.setText(item.getAddress());
+            holder.imageView.setImageBitmap(item.getBitmap());
         }
     }
 
@@ -47,13 +49,13 @@ import java.util.List;
     public static class TourViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         TextView address;
-
+        ImageView imageView;
         public TourViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name=itemView.findViewById(R.id.name);
             address=itemView.findViewById(R.id.address);
-
+            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 }
